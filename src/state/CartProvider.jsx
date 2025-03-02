@@ -115,4 +115,13 @@ const CartProvider = ({ children }) => {
   )
 }
 
-export { CartProvider, CartContext }
+// Custom hook to use the cart context
+const useCart = () => {
+  const context = useContext(CartContext);
+  if (context === undefined) {
+    throw new Error('useCart must be used within a CartProvider');
+  }
+  return context;
+}
+
+export { CartProvider, CartContext, useCart }
